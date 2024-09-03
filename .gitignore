@@ -1,0 +1,10 @@
+app/static/profile_pictures/
+migrations
+app/data.sqlite
+app/__pycache__/
+app/auth/__pycache__/
+app/core/__pycache__/
+app/utils/__pycache__/
+app/.DS_Store
+.DS_Store
+.venv

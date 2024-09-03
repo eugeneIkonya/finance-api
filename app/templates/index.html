@@ -3,5 +3,16 @@
 {% block content %}
 <div class="container w-50 m-auto">
     <h1 class="text-center">Home</h1>
+    <p class="lead">
+        {% if current_user.is_authenticated %}
+            Welcome {{ current_user.username}}
+            {% if current_user.is_admin %}
+                You are an admin
+            {% endif %}
+        {% else %}
+            This is a Starter Website
+
+        {% endif %}
+    </p>
 </div>
 {% endblock %}

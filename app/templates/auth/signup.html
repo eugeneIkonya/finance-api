@@ -1,7 +1,64 @@
 {% extends 'base.html' %}
 {% block title %}Login {% endblock %}
 {% block content %}
-<div class="container w-50 m-auto">
-    <h1 class="text-center">Signup</h1>
+<div class="container text-center w-75">
+  <h1 class="text-capitalize display-5">Sign up</h1>
+  <form method="post">
+     {{ form.hidden_tag() }}
+     <div class="input-group has-validation mb-3">
+        <div class="form-floating">
+          {{ form.first_name(class="form-control",placeholder="First Name") }}
+          {{ form.first_name.label() }}
+        </div>
+     </div>
+      <div class="input-group has-validation mb-3">
+          <div class="form-floating">
+            {{ form.last_name(class="form-control",placeholder="Last Name") }}
+            {{ form.last_name.label() }}
+          </div>
+      </div>
+      <div class="input-group has-validation mb-3">
+          <div class="form-floating">
+            {{ form.username(class="form-control"+ (" is-invalid" if form.username.errors else ""),placeholder="Username") }}
+            {{ form.username.label() }}
+            {% if form.username.errors %}
+            <div class="invalid-feedback">
+              {{ form.username.errors[0] }}
+            </div>
+            {% endif %}
+          </div>
+      </div>
+      <div class="input-group has-validation mb-3">
+          <div class="form-floating">
+            {{ form.email(class="form-control"+ (" is-invalid" if form.email.errors else ""),placeholder="Email") }}
+            {{ form.email.label() }}
+            {% if form.email.errors %}
+            <div class="invalid-feedback">
+              {{ form.email.errors[0] }}
+            </div>
+            {% endif %}
+          </div>
+      </div>
+      <div class="input-group has-validation mb-3">
+          <div class="form-floating">
+            {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""),placeholder="Password") }}
+            {{ form.password.label() }}
+            {% if form.password.errors %}
+            <div class="invalid-feedback">
+              {{ form.password.errors[0] }}
+            </div>
+            {% endif %}
+          </div>
+      </div>
+      <div class="input-group has-validation mb-3">
+          <div class="form-floating">
+            {{ form.password_confirm(class="form-control" + (" is-invalid" if form.password.errors else ""),placeholder="Confirm Password") }}
+            {{ form.password_confirm.label() }}
+          </div>
+      </div>
+      <div class="text-center">
+        {{ form.submit(class="btn btn-dark") }}
+      </div>
+  </form>
 </div>
 {% endblock %}

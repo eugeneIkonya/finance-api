@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block Title %}
+    Activation Required
+{% endblock %}
+{% block content %}
+    <div class="d-flex flex-column justify-content-center align-content-center min-vh-100">
+            <h1 class="display-5">Welcome</h1>
+            <br>
+            <p class="lead">Thanks for signing up. Please check your email to activate your account.</p>
+            <br><br>
+            <p class="lead">
+                Didn't receive an email? 
+                <a class="btn btn-outline-dark" href="{{ url_for('auth.resend_confirmation') }}">Resend Email</a>
+            </p>
+    </div>
+{% endblock %}

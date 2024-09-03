@@ -1,4 +1,9 @@
-flask
-flask_login
-flask_sqlalchemy
-flask_migrate
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login
+email_validator
+flask_wtf
+pillow
+Flask-Mail
+itsdangerous
