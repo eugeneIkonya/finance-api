@@ -7,3 +7,5 @@ flask_wtf
 pillow
 Flask-Mail
 itsdangerous
+flask_smorest
+flask-jwt-extended
