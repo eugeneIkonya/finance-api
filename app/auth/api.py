@@ -25,10 +25,14 @@ class Users(MethodView):
             email=data["email"],
             password=data["password"]
         )
+        if db.session.query(User).filter_by(username = user.username).first():
+            abort(400, message="Username Exists")
+        if db.session.query(User).filter_by(email = user.email).first():
+            abort(400, message="Email exists")
         db.session.add(user)
         db.session.commit()
 
-        return "Created Successfully"
+        return "Account Created"
 
 @auth.route('/<user_id>')
 class UserByID(MethodView):
