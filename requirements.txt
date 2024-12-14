@@ -9,3 +9,4 @@ Flask-Mail
 itsdangerous
 flask_smorest
 flask-jwt-extended
+flask-cors

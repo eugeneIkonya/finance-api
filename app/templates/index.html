@@ -1,18 +1,27 @@
-{% extends 'base.html' %}
-{% block title %} Home {% endblock %}
-{% block content %}
-<div class="container w-50 m-auto">
-    <h1 class="text-center">Home</h1>
-    <p class="lead">
-        {% if current_user.is_authenticated %}
-            Welcome {{ current_user.username}}
-            {% if current_user.is_admin %}
-                You are an admin
-            {% endif %}
-        {% else %}
-            This is a Starter Website
-
-        {% endif %}
-    </p>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>We are under maintenance</h1>
+</body>
+</html>

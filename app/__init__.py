@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 from flask_migrate import Migrate
 from app.config import DevelopmentConfig
 from flask_mail import Mail
+from flask_smorest import Api
+from flask_cors import CORS
 
 
 flask_app = Flask(__name__)
@@ -15,20 +16,15 @@ mail  = Mail(flask_app)
 
 Migrate(flask_app,db)
 
-login_manager = LoginManager()
-login_manager.init_app(flask_app)
-login_manager.login_view = 'auth.login'
 
+api = Api(flask_app)
+cors = CORS(flask_app, resources={r"/*" : {"origins" : "*"} })
 
+@flask_app.route('/')
+def index():
+    return render_template('index.html')
 
-
-from app.core.views import core
-flask_app.register_blueprint(core)
-
-from app.error_pages.handlers import error_pages
-flask_app.register_blueprint(error_pages)
-
-from app.auth.views import auth
-flask_app.register_blueprint(auth)
+from app.auth.api import auth
+api.register_blueprint(auth)
 
 from app.utils.comands import create_admin
