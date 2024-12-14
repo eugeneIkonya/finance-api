@@ -1,7 +1,7 @@
 from pyexpat.errors import messages
-
+from flask import make_response, jsonify
 from flask.views import MethodView
-from flask_smorest import Blueprint, abort
+from flask_smorest import Blueprint, abort, response
 from app import db
 from app.auth.schema import UserSchema, CreateUserSchema, LoginUserSchema, UpdatePasswordSchema, UpdateUsernameSchema, \
     UpdateEmailSchema
@@ -26,9 +26,11 @@ class Users(MethodView):
             password=data["password"]
         )
         if db.session.query(User).filter_by(username = user.username).first():
-            abort(400, message="Username Exists")
+            return make_response(jsonify({"message": "Username already exists"}), 400)
+
         if db.session.query(User).filter_by(email = user.email).first():
-            abort(401, message="Email exists")
+            return make_response(jsonify({"message": "Email already exists"}), 400)
+
         db.session.add(user)
         db.session.commit()
 
