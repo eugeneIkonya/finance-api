@@ -28,7 +28,7 @@ class Users(MethodView):
         if db.session.query(User).filter_by(username = user.username).first():
             abort(400, message="Username Exists")
         if db.session.query(User).filter_by(email = user.email).first():
-            abort(400, message="Email exists")
+            abort(401, message="Email exists")
         db.session.add(user)
         db.session.commit()
 
